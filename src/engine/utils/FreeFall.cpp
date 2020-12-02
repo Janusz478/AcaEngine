@@ -1,9 +1,6 @@
-#include <engine/utils/FreeFall.hpp>
-#include <engine/graphics/core/texture.cpp>
-#include <engine/graphics/renderer/mesh.cpp>
-#include <engine/graphics/renderer/meshrenderer.hpp>
-#include <iostream>
 #pragma once
+#include <engine/utils/FreeFall.hpp>
+#include <GL/glew.h>
 
 FreeFall::FreeFall() : GameState(), a(-0.01f), v(0.f) {
 	difference = glm::translate(glm::vec3(0.f, 10.f, -20.0f));

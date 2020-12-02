@@ -1,8 +1,15 @@
-#pragma once
-#include <engine/utils/Spring.hpp>
-#include <GL/glew.h>
 
-Spring::Spring() : GameState(), times(0) {}
+#include "Spring.hpp"
+#include <engine\graphics\core\texture.cpp>
+#include <engine\graphics\renderer\mesh.cpp>
+#include <engine\graphics\renderer\meshrenderer.hpp>
+#include <iostream>
+
+
+
+Spring::Spring() {
+
+}
 
 void Spring::newState() {
 	difference = glm::mat4(1.f);
@@ -10,10 +17,7 @@ void Spring::newState() {
 
 void Spring::update(float _time, float _deltaTime) {
 	times = times + 1;
-	if (_time > 5) {
-		finished = true;
-	}
-
+	
 }
 
 void Spring::draw(float _time, float _deltaTime) {
@@ -33,14 +37,11 @@ void Spring::draw(float _time, float _deltaTime) {
 }
 
 void Spring::onResume() {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	renderer->clear();
-	renderer->draw(*mesh, *texture, difference);
-	renderer->present(*camera);
+	float t = 0;
 }
 
 void Spring::onPause() {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	float t = 0;
 }
 
 //auto test_start = std::chrono::steady_clock::now();

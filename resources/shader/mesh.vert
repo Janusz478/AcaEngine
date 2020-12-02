@@ -10,7 +10,6 @@ uniform mat4 Camera;
 out vec2 uv;
 out vec3 Normal;
 out vec3 Position;
-out mat4 Camera2;
 
 void main() {
 	Position = vec3(Transform * vec4(vertexPosition, 1));
@@ -18,5 +17,4 @@ void main() {
 
 	uv = vertexUv;
 	gl_Position = Camera * Transform * vec4(vertexPosition, 1);
-	Camera2 = Camera;
 }

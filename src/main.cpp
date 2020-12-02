@@ -1,3 +1,4 @@
+#pragma once
 #include <engine/graphics/renderer/mesh.hpp>
 #include <engine/graphics/renderer/meshrenderer.hpp>
 #include <engine/utils/meshloader.hpp>
@@ -11,14 +12,14 @@
 #include <gl/GL.h>
 #include <GLFW/glfw3.h>
 #include <thread>
-#include <glm\ext\matrix_transform.hpp>
+#include <glm/ext/matrix_transform.hpp>
 #include <engine/utils/Game.hpp>
-//#include <engine/utils/Spring.cpp>
+#include <engine/utils/Spring.hpp>
 #include <engine/utils/UpAndDown.hpp>
 #include <engine/utils/FreeFall.hpp>
 #include <memory>
 #include <chrono>
-#pragma once
+
 
 // CRT's memory leak detection
 #ifndef NDEBUG 
@@ -41,13 +42,13 @@ int main(int argc, char* argv[])
 #endif
 #endif
 	Game game;
-	//UpAndDown upanddown;
-	//game.run(std::make_unique<UpAndDown>());
-	//FreeFall freefall;
-	game.run(std::make_unique<FreeFall>());
-	//Spring spring;
-	//game.run(std::make_unique<Spring>());
-	//game.run(std::make_unique<UpAndDown>(upanddown));
+	UpAndDown upanddown;
+	FreeFall freefall;
+	Spring spring;
+	game.addState(std::make_unique<FreeFall>());
+	game.addState(std::make_unique<Spring>());
+	game.run(std::make_unique<UpAndDown>());
+	
 	
 
 	/*

@@ -5,6 +5,7 @@
 #include "glm/glm.hpp"
 #include "mesh.hpp"
 #include <vector>
+#include <engine\graphics\core\geometrybuffer.hpp>
 
 namespace graphics {
 
@@ -16,6 +17,8 @@ namespace graphics {
 	public:
 		MeshRenderer();
 
+		~MeshRenderer();
+
 		void draw(const Mesh& _mesh, const Texture2D& _texture, const glm::mat4& _transform);
 
 		void present(const Camera& _camera);
@@ -24,17 +27,18 @@ namespace graphics {
 	private:
 
 		struct MeshInstance {
-			std::vector<Mesh::Vertex> meshVertices;
+			const std::vector<Mesh::Vertex>& meshVertices;
 			const Texture2D& texture;
-			const glm::mat4& transform;
-			unsigned vao;
-			unsigned vbo;
-			mutable bool dirty;
+			glm::mat4 transform;
 		};
+
+		graphics::GeometryBuffer* geometryBuffer;
 
 		std::vector<MeshInstance> instances;
 
 		Program program;
+
+		std::vector<unsigned> textureIds;
 
 	};
 }
