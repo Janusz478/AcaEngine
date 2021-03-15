@@ -54,16 +54,16 @@ namespace graphics {
 
 		glfwSetErrorCallback(ErrorCallback);
 
-	  glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+		glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4); // We want OpenGL 4.5
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-		glfwWindowHint(GLFW_FOCUSED, GL_FALSE);
+		glfwWindowHint(GLFW_FOCUSED, GL_TRUE);//
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
 
 		spdlog::info("dimensions: {} {}: full-screen?: {}", _width, _height, _fullScreen);
 		s_window = glfwCreateWindow(_width, _height, "AcaEngine", nullptr, nullptr);
-		if (!s_window)
+		if (!s_window)										   //glfwGetPrimaryMonitor()
 		{
 			spdlog::error("Could not create window.");
 			glfwTerminate();

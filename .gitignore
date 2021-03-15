@@ -2,3 +2,5 @@
 .*
 !.gitignore
 !.gitmodules
+/out/build/x64-Debug (Standard)/Testing/Temporary
+/out

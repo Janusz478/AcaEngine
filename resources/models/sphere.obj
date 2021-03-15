@@ -1,6 +1,6 @@
 # Blender v2.82 (sub 7) OBJ File: ''
 # www.blender.org
-mtllib sphere.mtl
+# mtllib sphere.mtl
 v 0.000000 0.707107 -0.707107
 v 0.000000 0.382683 -0.923880
 v 0.000000 -0.382684 -0.923880
