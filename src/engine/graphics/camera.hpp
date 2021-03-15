@@ -2,9 +2,6 @@
 
 #include <glm/glm.hpp>
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtx/transform.hpp>
-
 namespace graphics {
 
 	class Camera
@@ -22,6 +19,7 @@ namespace graphics {
 
 		void setView(const glm::mat4& _view) { m_view = _view; updateMatrices(); }
 
+		// @Return the position of the point _screenSpace on the near plane of this camera
 		glm::vec3 toWorldSpace(const glm::vec2& _sceenSpace) const;
 	private:
 		void updateMatrices();

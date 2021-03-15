@@ -4,7 +4,6 @@
 
 namespace graphics {
 
-
 	class Mesh
 	{
 	public:

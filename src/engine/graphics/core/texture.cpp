@@ -134,13 +134,13 @@ namespace graphics {
 
 	Texture2D::~Texture2D()
 	{
-		if(m_bindlessHandle) 
-		{
-			if ( GLEW_ARB_bindless_texture )
-			{
-				glCall(glMakeTextureHandleNonResidentARB, m_bindlessHandle);
-			}
-		}
+		//if(m_bindlessHandle) 
+		//{
+		//	if ( GLEW_ARB_bindless_texture )
+		//	{
+		//		glCall(glMakeTextureHandleNonResidentARB, m_bindlessHandle);
+		//	}
+		//}
 		glCall(glBindTexture, GL_TEXTURE_2D, 0);
 		glCall(glDeleteTextures, 1, &m_textureID);
 		spdlog::info("[graphics] Deleted texture {} .", m_textureID);
@@ -203,7 +203,9 @@ namespace graphics {
 		// TODO: check binding to avoid rebinds
 		glCall(glActiveTexture, GL_TEXTURE0 + _slot);
 		glCall(glBindTexture, GL_TEXTURE_2D, m_textureID);
-		m_sampler->bind(_slot);
+		if (m_sampler->getID() == getGPUHandle()) {
+			m_sampler->bind(_slot);
+		}
 	}
 
 	/*TextureAtlas::TextureAtlas(int _maxWidth, int _maxHeight) :
